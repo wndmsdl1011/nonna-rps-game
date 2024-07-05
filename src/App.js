@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import './App.css';
+
+import confetti from 'canvas-confetti';
 import Box from './component/Box';
 
 const choice = {
@@ -27,8 +29,18 @@ function App() {
     setUserSelect(choice[userChoice]);
     let computerChoice = randomChoice();
     setComputerSelect(computerChoice);
-    setResult(judgement(choice[userChoice], computerChoice));
-    setResult2(judgement2(computerChoice, choice[userChoice]))
+    const userResult = judgement(choice[userChoice], computerChoice);
+    const computerResult = judgement2(computerChoice, choice[userChoice]);
+    //setResult(judgement(choice[userChoice], computerChoice));
+    //setResult2(judgement2(computerChoice, choice[userChoice]))
+
+    setResult(userResult);
+    setResult2(computerResult);
+
+    // 사용자가 이겼을 때 폭죽 효과를 실행
+    if (userResult === "win") {
+      firework();
+    }
   };
 
   const judgement = (user, computer) => {
@@ -69,21 +81,54 @@ function App() {
 
   return (
     <div>
+      <h1 className='game-name'>Rock! Paper! Scissors!</h1>
       <div className='main'>
         <Box title="You" item={userSelect} result={result} />
         <Box title="Computer" item={computerSelect} result={result2} />
       </div>
 
-      <div className='main'>
-        <button onClick={() => play("scissors")}>가위</button>
-        <button onClick={() => play("rock")}>바위</button>
-        <button onClick={() => play("paper")}>보</button>
+      <div className='btn'>
+        <button onClick={() => play("rock")}>✊</button>
+        <button onClick={() => play("paper")}>🖐️</button>
+        <button onClick={() => play("scissors")}>✌️</button>
       </div>
-
-
     </div>
 
   );
+}
+
+function firework() {
+  var duration = 15 * 100;
+  var animationEnd = Date.now() + duration;
+  var defaults = { startVelocity: 25, spread: 360, ticks: 50, zIndex: 0 };
+  //  startVelocity: 범위, spread: 방향, ticks: 갯수
+
+  function randomInRange(min, max) {
+    return Math.random() * (max - min) + min;
+  }
+
+  var interval = setInterval(function () {
+    var timeLeft = animationEnd - Date.now();
+
+    if (timeLeft <= 0) {
+      return clearInterval(interval);
+    }
+
+    var particleCount = 50 * (timeLeft / duration);
+    // since particles fall down, start a bit higher than random
+    confetti(
+      Object.assign({}, defaults, {
+        particleCount,
+        origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 }
+      })
+    );
+    confetti(
+      Object.assign({}, defaults, {
+        particleCount,
+        origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 }
+      })
+    );
+  }, 250);
 }
 
 export default App;

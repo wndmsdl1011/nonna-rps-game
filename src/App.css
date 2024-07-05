@@ -1,6 +1,11 @@
 .box{
   border: 1px solid black;
   width: 500px;
+  margin-left: 70px;
+  margin-right: 70px;
+  font-family: "SongMyung-Regular";
+  border-radius: 10% 10%;
+  text-align: center;
 }
 
 .item-img{
@@ -13,8 +18,48 @@
   justify-content: center;
 }
 
-.win { border: 10px solid green; color:green}
+.win { border: 3px solid green; color:green}
 
-.lose { border: 10px solid red; color:red}
+.lose { border: 3px solid red; color:red}
 
-.tie { border: 10px solid black; color:black}
+.tie { border: 3px solid black; color:black}
+
+.content {
+  display: flex;
+  justify-content: center;
+}
+
+button{
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: rgb(236, 236, 236);
+  border-radius: 50% 50%;
+  cursor: pointer;
+  margin-left: 15px;
+  font-size: 30px;
+  transition: 0.3s;
+}
+
+@font-face {
+  font-family: 'fontt';
+  src: url("fonts/fontt.ttf");
+}
+
+.game-name {
+  font-size: 40px;
+  font-family: fontt;
+  display: flex;
+  justify-content: center;
+}
+
+button:hover{
+  scale: 1.1;
+}
+
+.btn{
+  display: flex;
+  justify-content: center;
+  margin-right: 10px;
+  margin-top: 20px;
+}
