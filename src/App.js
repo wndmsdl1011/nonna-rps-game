@@ -15,7 +15,7 @@ const choice = {
   },
   paper: {
     name: "Paper",
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlBJrv6z6L3ixesiVIZcOoPfzCrQmS0IsE3A&s'
+    img: 'https://png.pngtree.com/png-clipart/20230927/original/pngtree-sheet-of-paper-png-png-image_13141476.png'
   }
 
 }
