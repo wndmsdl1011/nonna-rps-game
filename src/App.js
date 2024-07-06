@@ -17,7 +17,6 @@ const choice = {
     name: "Paper",
     img: 'https://png.pngtree.com/png-clipart/20230927/original/pngtree-sheet-of-paper-png-png-image_13141476.png'
   }
-
 }
 function App() {
   const [userSelect, setUserSelect] = useState(null);
